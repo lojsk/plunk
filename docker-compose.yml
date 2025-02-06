@@ -6,11 +6,8 @@ services:
       context: .
     ports:
       - "3000:3000"
-    depends_on:
-      redis:
-        condition: service_started
     environment:
-      REDIS_URL: 'redis://redis:6379'
+      REDIS_URL: '${REDIS_URL}'
       DATABASE_URL: '${DATABASE_URL}'
       JWT_SECRET: '${JWT_SECRET}'
       AWS_REGION: '${AWS_REGION}'
@@ -22,5 +19,3 @@ services:
       APP_URI: '${APP_URI}'
       DISABLE_SIGNUPS: 'False'
     entrypoint: [ "/app/entry.sh" ]
-  redis:
-    image: redis
