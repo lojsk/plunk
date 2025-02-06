@@ -6,6 +6,9 @@ services:
       context: .
     ports:
       - "3000:3000"
+    depends_on:
+      redis:
+        condition: service_started
     environment:
       REDIS_URL: 'redis://redis:6379'
       DATABASE_URL: '${DATABASE_URL}'
