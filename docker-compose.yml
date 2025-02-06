@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      REDIS_URL: '${REDIS_URL}'
+      REDIS_URL: 'redis://redis:6379'
       DATABASE_URL: '${DATABASE_URL}'
       JWT_SECRET: '${JWT_SECRET}'
       AWS_REGION: '${AWS_REGION}'
@@ -19,3 +19,5 @@ services:
       APP_URI: '${APP_URI}'
       DISABLE_SIGNUPS: 'False'
     entrypoint: [ "/app/entry.sh" ]
+  redis:
+    image: redis
