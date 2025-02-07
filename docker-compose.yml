@@ -17,5 +17,5 @@ services:
       NEXT_PUBLIC_API_URI: '${API_URI}'
       API_URI: '${API_URI}'
       APP_URI: '${APP_URI}'
-      DISABLE_SIGNUPS: 'False'
+      DISABLE_SIGNUPS: '${DISABLE_SIGNUPS}'
     entrypoint: [ "/app/entry.sh" ]
