@@ -90,7 +90,7 @@ export class Campaigns {
 			let delay = userDelay ?? 0;
 
 			const tasks = campaign.recipients.map((r, index) => {
-				if (index % 80 === 0) {
+				if (index % 600 === 0) {
 					delay += 1;
 				}
 

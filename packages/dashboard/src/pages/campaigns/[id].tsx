@@ -803,8 +803,8 @@ export default function Index() {
 									className={"relative z-10 sm:col-span-6"}
 								>
 									<Alert type={"info"} title={"Automatic batching"}>
-										Your campaign will be sent out in batches of 80 recipients each. It will be delivered to all contacts{" "}
-										{dayjs().to(dayjs().add(Math.ceil(watch("recipients").length / 80), "minutes"))}
+										Your campaign will be sent out in batches of 600 recipients each. It will be delivered to all contacts{" "}
+										{dayjs().to(dayjs().add(Math.ceil(watch("recipients").length / 600), "minutes"))}
 									</Alert>
 								</motion.div>
 							)}
