@@ -19,7 +19,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3
-RUN apk add --no-cache bash nginx
+RUN apk add --no-cache bash nginx curl
 
 COPY --from=base /app/packages/api/dist /app/packages/api/
 COPY --from=base /app/packages/dashboard/.next /app/packages/dashboard/.next
