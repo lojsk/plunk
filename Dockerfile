@@ -7,7 +7,7 @@ COPY . .
 
 ARG NEXT_PUBLIC_API_URI=PLUNK_API_URI
 
-RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3
+# RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3 # use this fix for new node
 RUN yarn install --network-timeout 1000000
 RUN yarn build:shared
 RUN yarn workspace @plunk/api build
@@ -18,7 +18,7 @@ FROM node:20-alpine3.20
 
 WORKDIR /app
 
-RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3
+# RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3 # use this fix for new node
 RUN apk add --no-cache bash nginx curl
 
 COPY --from=base /app/packages/api/dist /app/packages/api/
