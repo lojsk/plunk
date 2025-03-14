@@ -6,7 +6,5 @@ echo "Prisma migrations completed."
 
 sh replace-variables.sh &&
 
-nginx &
-
 echo "Starting Supervisor..."
 supervisord -c supervisord.conf
