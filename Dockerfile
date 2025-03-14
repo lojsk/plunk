@@ -19,7 +19,7 @@ FROM node:20-alpine3.20
 WORKDIR /app
 
 # RUN ln -s /usr/lib/libssl.so.3 /lib/libssl.so.3 # use this fix for new node
-RUN apk add --no-cache bash nginx curl
+RUN apk add --no-cache bash nginx curl supervisor
 
 COPY --from=base /app/packages/api/dist /app/packages/api/
 COPY --from=base /app/packages/dashboard/.next /app/packages/dashboard/.next
@@ -28,9 +28,9 @@ COPY --from=base /app/node_modules /app/node_modules
 COPY --from=base /app/packages/shared /app/packages/shared
 COPY --from=base /app/prisma /app/prisma
 COPY deployment/nginx.conf /etc/nginx/nginx.conf
-COPY deployment/entry.sh deployment/replace-variables.sh /app/
+COPY deployment/entry.sh deployment/replace-variables.sh deployment/supervisord.conf /app/
 
-RUN chmod +x /app/entry.sh /app/replace-variables.sh
+RUN chmod +x /app/entry.sh /app/replace-variables.sh /app/supervisord.conf
 
 EXPOSE 3000 4000 5000
 
