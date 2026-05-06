@@ -311,22 +311,9 @@ export class Campaigns {
 			},
 		});
 
-		await prisma.campaign.update({
-			where: { id },
-			data: {
-				recipients: {
-					set: [],
-				},
-			},
-		});
+		await prisma.$executeRaw`DELETE FROM "_CampaignToContact" WHERE "A" = ${id}`;
 
 		const chunkSize = 500;
-
-		for (let i = 0; i < campaign.recipients.length; i += chunkSize) {
-			const chunk = campaign.recipients.slice(i, i + chunkSize);
-
-			await prisma.$executeRaw`DELETE FROM "_CampaignToContact" WHERE "A" = ${campaign.id} AND "B" = ANY(${chunk.map((c) => c.id)})`;
-		}
 
 		for (let i = 0; i < recipients.length; i += chunkSize) {
 			const chunk = recipients.slice(i, i + chunkSize);
