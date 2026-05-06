@@ -311,6 +311,8 @@ export class Campaigns {
 			},
 		});
 
+		await prisma.$executeRaw`DELETE FROM "_CampaignToContact" WHERE "A" = ${id}`;
+
 
 		const chunkSize = 500;
 
