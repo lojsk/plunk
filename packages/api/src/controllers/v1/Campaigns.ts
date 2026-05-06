@@ -311,9 +311,9 @@ export class Campaigns {
 			},
 		});
 
-		await prisma.$executeRaw`DELETE FROM "_CampaignToContact" WHERE "A" = ${id}`;
 
 		const chunkSize = 500;
+
 
 		for (let i = 0; i < recipients.length; i += chunkSize) {
 			const chunk = recipients.slice(i, i + chunkSize);
